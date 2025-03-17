@@ -1,9 +1,9 @@
-let title = "Расчет стоимости выполнения проекта";
-let screens = "Простые, Сложные, Интерактивные";
-let screenPrice = 50000;
-let rollback = Math.floor(Math.random() * 100) + 1;
-let fullPrice = 150000;
-let adaptive = false;
+const title = "Расчет стоимости выполнения проекта";
+const screens = "Простые, Сложные, Интерактивные";
+const screenPrice = 50000;
+const rollback = Math.floor(Math.random() * 100) + 1;
+const fullPrice = 150000;
+const adaptive = false;
 
 console.log(typeof title);
 console.log(typeof fullPrice);
