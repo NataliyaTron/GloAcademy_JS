@@ -57,7 +57,19 @@ const appData = {
         price = prompt("Сколько это будет стоить?");
       } while (!appData.isNumber(price));
 
-      appData.services[name] = +price;
+      // appData.services[name] = +price;
+
+      //Создадим уникальный ключ для услуги
+      let uniqueKey = name;
+      let count = 1;
+
+      //Проверяем, существует ли уже такая услуга
+      while (appData.services[uniqueKey]) {
+        count++;
+        uniqueKey = `${name}_${count}`; // добавляем номер к имени
+      }
+
+      appData.services[uniqueKey] = +price; // сохраняем услугу с уникальным ключом
     }
 
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
@@ -65,7 +77,11 @@ const appData = {
 
   addPrices: function () {
     for (let screen of appData.screens) {
-      appData.screenPrice += +screen.price;
+      // appData.screenPrice += +screen.price;
+      appData.screenPrice = appData.screens.reduce(
+        (acc, screen) => acc + screen.price,
+        0
+      );
     }
 
     for (let key in appData.services) {
